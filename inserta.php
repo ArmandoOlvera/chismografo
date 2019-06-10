@@ -1,25 +1,12 @@
 <?php
-	$servername = "localhost";
-	$username = "sistem63_SQL01";
-	$dbname   = "sistem63_Estudiantes";
-	$password = "Chingatumadre123";	
+	include 'basededatos.php';
 
-	$nombre    = $_POST['nombre'];
-	$apellidop = $_POST['apellidop'];
-	$apellidom = $_POST['apellidom'];
+	$nombre    = $_POST['usuario'];
+	$apellidop = $_POST['password'];
+	$apellidom = $_POST['nivel'];
+ 
 
-	
-	echo "Registro Recibido"."\n"."Nombre: ".$nombre."\n ApellidoP: ".$apellidop."\n ApellidoM: ".$apellidom."\n";	
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 	
-	
-
-	$sql = "INSERT INTO TablaAlumnos (Nombre, ApellidoP, ApellidoM)
+	$sql = "INSERT INTO usuarios (usuario, password, nivel)
 	VALUES ('$nombre', '$apellidop', '$apellidom')";
 
 	if ($conn->query($sql) === TRUE) {
